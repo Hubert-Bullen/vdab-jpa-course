@@ -1,30 +1,28 @@
 package be.vdab;
 
+import org.junit.Test;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class Main {
-    private static JpaBookRepository bookRepository;
+import static org.junit.Assert.assertEquals;
 
-    public static void main(String[] args) {
+public class PersistenceTest {
+    @Test
+    public void findAllBooks() throws Exception {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Books");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
 
-        bookRepository = new JpaBookRepository(entityManager);
-        printAllBooks();
+        List<Book> books = entityManager.createQuery("select b from Book b", Book.class).getResultList();
+        assertEquals("Nineteen Eighty Four", books.get(0).getTitle());
+        assertEquals("Uncle Tom's Cabin", books.get(1).getTitle());
+        assertEquals("Moby Dick or The Whale", books.get(2).getTitle());
 
         entityManager.getTransaction().commit();
         entityManager.close();
         entityManagerFactory.close();
-    }
-
-    private static void printAllBooks() {
-        List<Book> books = bookRepository.findAllBooks();
-        for (Book book : books) {
-            System.out.println(book);
-        }
     }
 }
