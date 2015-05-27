@@ -88,6 +88,7 @@ public class Passenger {
     private void assignAge(Date dateOfBirth) {
         Calendar dob = Calendar.getInstance();
         dob.setTime(dateOfBirth);
-        this.age = Calendar.getInstance().get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+        this.age = Calendar.getInstance().get(Calendar.YEAR)
+                - dob.get(Calendar.YEAR);
     }
 }
