@@ -11,9 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-/**
- * Created by KVRRQ70 on 26/05/2015.
- */
 public abstract class AbstractPersistenceTest {
     private static EntityManagerFactory entityManagerFactory;
     protected EntityManager entityManager;

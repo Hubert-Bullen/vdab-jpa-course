@@ -14,7 +14,7 @@ public class BookPersistenceTest extends AbstractPersistenceTest {
     }
 
     @Test
-    public void findAllBooksReturnsExactlyThreeBooks() throws Exception {
+    public void findAllBooksReturnsExactlyThreeBooks() {
         List<Book> books  = entityManager.createQuery("select b from Book b", Book.class).getResultList();
         assertEquals(3, books.size());
     }
