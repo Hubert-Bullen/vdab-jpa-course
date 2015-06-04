@@ -14,6 +14,9 @@ public class Book {
 
     private String isbn;
 
+    @Version
+    private int version;
+
     /**
      * Used by JPA.
      */
@@ -65,5 +68,9 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", isbn='" + isbn + '\'' +
                 '}';
+    }
+
+    public int getVersion() {
+        return version;
     }
 }

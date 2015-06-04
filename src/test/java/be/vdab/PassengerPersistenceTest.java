@@ -9,14 +9,19 @@ import static org.junit.Assert.*;
 
 public class PassengerPersistenceTest extends AbstractPersistenceTest {
     /**
-     * TODO: Possible problem: failing test depends on order of other methods (delete).
+     * TODO: Possible problem: failing test depends on order of other methods (delete). We will deal with this in the unit test course!
      */
     @Test
     public void testFindPassengers() throws Exception {
         List<Passenger> passengers = entityManager
                 .createQuery("select p from Passenger p", Passenger.class)
                 .getResultList();
-
+        String yoda = "__.-._\n" +
+        "'-._\"7'\n" +
+        " /'.-c\n" +
+        " |  /T\n" +
+        "_)_/LI";
+        assertEquals("\n" + yoda + "\nYoda says: Compute, does not! Passengers not two are!", 2, passengers.size());
         assertEquals("Buddy", passengers.get(0).getFirstName());
         assertEquals("Richie", passengers.get(1).getFirstName());
     }
