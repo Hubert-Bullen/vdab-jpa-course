@@ -12,6 +12,6 @@ public class JpaBookRepository implements BookRepository {
 
     @Override
     public List<Book> findAllBooks() {
-        return entityManager.createQuery("select b from Book b").getResultList();
+        return entityManager.createQuery("select b from Book b", Book.class).getResultList();
     }
 }
